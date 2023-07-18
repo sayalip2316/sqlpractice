@@ -3,7 +3,8 @@ const express=require("express")
 const app=express();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const cors = require('cors')
+const cors = require('cors');
+require("dotenv").config()
 
 app.use(express.json())
 app.use(cors())
@@ -47,7 +48,7 @@ app.post("/login",async(req,res)=>{
 })
 
 sequelize.sync().then(()=>{
-    app.listen(3001, ()=>{
+    app.listen(process.env.PORT, ()=>{
         console.log("Server is listining")
     })
 })
